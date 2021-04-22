@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-	
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
-	<!-- TODO Add Nodes -->
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #242525;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
+   <children>
+      <VBox layoutX="202.0" layoutY="99.0" prefHeight="358.0" prefWidth="114.0" style="-fx-background-color: #353636;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" text="HOME">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="35.0" layoutY="20.0" mnemonicParsing="false" text="SHEET">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="35.0" layoutY="107.0" mnemonicParsing="false" text="CALENDAR">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="144.0" mnemonicParsing="false" text="SETTINGS">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="35.0" layoutY="201.0" mnemonicParsing="false" text="PROFILE">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="425.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Canvas height="200.0" layoutX="500.0" layoutY="260.0" width="200.0" />
+   </children>
 </AnchorPane>
