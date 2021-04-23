@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -7,38 +8,64 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #242525;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
+<AnchorPane fx:id="pane" prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #242525;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
    <children>
-      <VBox layoutX="202.0" layoutY="99.0" prefHeight="358.0" prefWidth="114.0" style="-fx-background-color: #353636;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="202.0" layoutY="99.0" prefHeight="358.0" prefWidth="115.0" style="-fx-background-color: #353636;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" text="HOME">
+            <Button fx:id="homBtn" mnemonicParsing="false" text="HOME">
                <VBox.margin>
                   <Insets bottom="10.0" left="25.0" right="25.0" top="50.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="35.0" layoutY="20.0" mnemonicParsing="false" text="SHEETS">
+            <Button fx:id="shtBtn" layoutX="35.0" layoutY="20.0" mnemonicParsing="false" onAction="#openSheets" text="SHEET">
                <VBox.margin>
                   <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="35.0" layoutY="107.0" mnemonicParsing="false" text="CALENDAR">
+            <Button fx:id="calBtn" layoutX="35.0" layoutY="107.0" mnemonicParsing="false" onAction="#openCal" text="CALENDAR">
                <VBox.margin>
                   <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="144.0" mnemonicParsing="false" text="SETTINGS">
+            <Button fx:id="setBtn" layoutX="10.0" layoutY="144.0" mnemonicParsing="false" onAction="#openSettings" text="SETTINGS">
                <VBox.margin>
                   <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="35.0" layoutY="201.0" mnemonicParsing="false" text="PROFILE">
+            <Button fx:id="proBtn" layoutX="35.0" layoutY="201.0" mnemonicParsing="false" onAction="#openProfile" text="PROFILE">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" top="425.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
-      <Canvas height="200.0" layoutX="500.0" layoutY="260.0" width="200.0" />
+      <VBox layoutX="161.0" layoutY="108.0" prefHeight="720.0" prefWidth="1085.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Welcome, User" textFill="#d7d7d7">
+               <font>
+                  <Font size="70.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Next Shift" textFill="#d7d7d7">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label text="DAY MM/DD/YYYY 00:00 HRS" textFill="#d7d7d7">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
