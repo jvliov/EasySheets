@@ -1,7 +1,9 @@
 package application;
 
+import java.awt.TextField;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
 
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
 
@@ -41,6 +43,21 @@ public class SettingsController {
 	private Button edit;
 	@FXML
 	private Button done;
+	@FXML
+	private TextField nameField;
+	@FXML 
+	private TextField DoBField;
+	@FXML
+	private TextField addField;
+	@FXML
+	private TextField locField;
+	@FXML
+	private TextField phoneField;
+	@FXML 
+	private TextField EField;
+	
+	
+		HashMap<String, String> info = new HashMap<String, String>();
 
 		public void initialize()
 		{
@@ -93,10 +110,27 @@ public class SettingsController {
     
     public void editInfo(ActionEvent event) throws IOException
     {
+    	
     	template.setVisible(false);
     	enterInfo.setVisible(true);
+
+    }
+    
+    public void doneInfo(ActionEvent event) throws IOException
+    {
+    	String inputName = nameField.getText();
+    	String inputDob = DoBField.getText();
+    	String inputAdd = addField.getText();
+    	String inputloc = locField.getText();
+    	String inputPhone = phoneField.getText();
+    	String inputEmail = EField.getText();
     	
-    	
+    	info.put("name", inputName);
+    	info.put("date of birth", inputDob);
+    	info.put("address", inputAdd);
+    	info.put("city, state", inputloc);
+    	info.put("phone", inputPhone);
+    	info.put("Email", inputEmail);
     	
     }
 }
