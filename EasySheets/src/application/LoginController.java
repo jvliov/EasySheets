@@ -120,6 +120,15 @@ public class LoginController
 
 	}
 	
+	//THIS IS CALLED WHEN THE USER CLICKS NEED IN THE MAIN PAGE
+    public void openHome(ActionEvent event) throws IOException {
+    	background = (AnchorPane)FXMLLoader.load(getClass().getResource("Home.fxml"));
+    	Scene scene = new Scene(background,1200,720);
+    	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	window.setScene(scene);
+    	window.show();
+    }
+	
 	
 
 }
