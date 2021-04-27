@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #242525;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SettingsController">
+<AnchorPane fx:id="pane" prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #242525;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SettingsController">
    <children>
+      <ImageView fitHeight="720.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="115.0">
+         <image>
+            <Image url="@Reasources/Settings%20backGround.png" />
+         </image>
+      </ImageView>
       <VBox layoutX="202.0" layoutY="99.0" prefHeight="358.0" prefWidth="115.0" style="-fx-background-color: #353636;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="homBtn" fitHeight="57.0" fitWidth="54.0" onMouseClicked="#openHome" pickOnBounds="true" preserveRatio="true">
@@ -19,12 +29,12 @@
                   <Insets left="25.0" top="20.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../Reasources/homeIcon.png" />
+                  <Image url="@Reasources/homeIcon.png" />
                </image>
             </ImageView>
             <ImageView fx:id="shtBtn" fitHeight="57.0" fitWidth="54.0" layoutX="30.0" layoutY="238.0" onMouseClicked="#openSheets" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Reasources/sheets.png" />
+                  <Image url="@../../../../git/EasySheets/EasySheets/src/Reasources/sheets.png" />
                </image>
                <VBox.margin>
                   <Insets left="32.0" top="20.0" />
@@ -32,7 +42,7 @@
             </ImageView>
             <ImageView fx:id="calBtn" fitHeight="57.0" fitWidth="54.0" layoutX="10.0" layoutY="290.0" onMouseClicked="#openCal" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Reasources/calendar.png" />
+                  <Image url="@../../../../git/EasySheets/EasySheets/src/Reasources/calendar.png" />
                </image>
                <VBox.margin>
                   <Insets left="32.0" top="20.0" />
@@ -40,7 +50,7 @@
             </ImageView>
             <ImageView fx:id="setBtn" fitHeight="57.0" fitWidth="54.0" layoutX="10.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Reasources/settings.png" />
+                  <Image url="@../../../../git/EasySheets/EasySheets/src/Reasources/settings.png" />
                </image>
                <VBox.margin>
                   <Insets left="29.0" top="20.0" />
@@ -53,161 +63,211 @@
             </Button>
          </children>
       </VBox>
-      <VBox layoutX="161.0" layoutY="108.0" prefHeight="720.0" prefWidth="1085.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label layoutX="130.0" layoutY="14.0" text="Preferences" textFill="#d7d7d7">
+         <font>
+            <Font size="70.0" />
+         </font>
+      </Label>
+      <VBox layoutX="130.0" layoutY="485.0" prefHeight="200.0" prefWidth="279.0">
          <children>
-            <Label text="Preferences" textFill="#d7d7d7">
+            <HBox prefHeight="43.0" prefWidth="1085.0">
+               <children>
+                  <Label text="Theme:" textFill="#d7d7d7">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox prefHeight="12.0" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="9.0" />
+                     </HBox.margin>
+                  </ChoiceBox>
+               </children>
+            </HBox>
+            <Label text="Time Zone:" textFill="#d7d7d7">
                <font>
-                  <Font size="70.0" />
+                  <Font size="27.0" />
                </font>
                <VBox.margin>
-                  <Insets left="10.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
-            <HBox prefHeight="45.0" prefWidth="1085.0">
-               <children>
-                  <Label text="Profile" textFill="#d7d7d7">
-                     <font>
-                        <Font size="51.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Edit">
-                     <HBox.margin>
-                        <Insets left="30.0" top="18.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </HBox>
-            <GridPane prefHeight="251.0" prefWidth="1085.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="536.6437377929688" minWidth="10.0" prefWidth="160.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="922.666748046875" minWidth="10.0" prefWidth="915.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="50.91499328613281" minHeight="10.0" prefHeight="39.47369384765625" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="77.91497802734375" minHeight="10.0" prefHeight="46.73573303222656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="155.4615020751953" minHeight="10.0" prefHeight="44.26426696777344" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.41287231445312" minHeight="38.08502197265625" prefHeight="44.372467041015625" />
-                  <RowConstraints maxHeight="123.259033203125" minHeight="38.084991455078125" prefHeight="45.35626220703125" />
-                  <RowConstraints maxHeight="114.36026000976562" minHeight="38.08502197265625" prefHeight="45.64373779296875" />
-              </rowConstraints>
-               <children>
-                  <Label text="Name:" textFill="#d7d7d7">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Label>
-                  <Label text="Date of Birth:" textFill="#d7d7d7" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="Address:" textFill="#d7d7d7" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="City, State:" textFill="#d7d7d7" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="Phone:" textFill="#d7d7d7" GridPane.rowIndex="4">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="Email:" textFill="#d7d7d7" GridPane.rowIndex="5">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="Firstname Lastname" textFill="#d7d7d7" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="MM/DD/YYYY" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="12345 Address St" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="City, STATE" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="XXX-XXX-XXXX" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-                  <Label text="email@address.com" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets left="10.0" />
-               </VBox.margin>
-            </GridPane>
-            <VBox layoutX="10.0" layoutY="96.0" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label text="Settings" textFill="#d7d7d7">
-                     <font>
-                        <Font size="51.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <HBox prefHeight="43.0" prefWidth="1085.0">
-                     <children>
-                        <Label text="Theme:" textFill="#d7d7d7">
-                           <font>
-                              <Font size="27.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Label>
-                        <ChoiceBox prefHeight="12.0" prefWidth="150.0">
-                           <HBox.margin>
-                              <Insets left="5.0" top="6.0" />
-                           </HBox.margin>
-                        </ChoiceBox>
-                     </children>
-                  </HBox>
-                  <Label text="Time Zone:" textFill="#d7d7d7">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" top="5.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-            </VBox>
             <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="62.0" text="Logout">
                <VBox.margin>
-                  <Insets left="10.0" top="60.0" />
+                  <Insets top="80.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
+      <GridPane fx:id="template" layoutX="130.0" layoutY="170.0" prefHeight="251.0" prefWidth="1085.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="536.6437377929688" minWidth="10.0" prefWidth="160.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="922.666748046875" minWidth="10.0" prefWidth="915.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="50.91499328613281" minHeight="10.0" prefHeight="39.47369384765625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="77.91497802734375" minHeight="10.0" prefHeight="46.73573303222656" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="155.4615020751953" minHeight="10.0" prefHeight="44.26426696777344" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="147.41287231445312" minHeight="38.08502197265625" prefHeight="44.372467041015625" />
+            <RowConstraints maxHeight="123.259033203125" minHeight="38.084991455078125" prefHeight="45.35626220703125" />
+            <RowConstraints maxHeight="114.36026000976562" minHeight="38.08502197265625" prefHeight="45.64373779296875" />
+         </rowConstraints>
+         <children>
+            <Label text="Name:" textFill="#d7d7d7">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <Label text="Date of Birth:" textFill="#d7d7d7" GridPane.rowIndex="1">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="Address:" textFill="#d7d7d7" GridPane.rowIndex="2">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="City, State:" textFill="#d7d7d7" GridPane.rowIndex="3">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="Phone:" textFill="#d7d7d7" GridPane.rowIndex="4">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="Email:" textFill="#d7d7d7" GridPane.rowIndex="5">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="Firstname Lastname" textFill="#d7d7d7" GridPane.columnIndex="1">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="MM/DD/YYYY" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="12345 Address St" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="City, STATE" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="XXX-XXX-XXXX" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="email@address.com" textFill="#d7d7d7" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane fx:id="enterInfo" layoutX="130.0" layoutY="170.0" prefHeight="251.0" prefWidth="1078.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="536.6437377929688" minWidth="10.0" prefWidth="160.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="922.666748046875" minWidth="10.0" prefWidth="915.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="50.91499328613281" minHeight="10.0" prefHeight="39.47369384765625" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="77.91497802734375" minHeight="10.0" prefHeight="46.73573303222656" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="155.4615020751953" minHeight="10.0" prefHeight="44.26426696777344" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="147.41287231445312" minHeight="38.08502197265625" prefHeight="44.372467041015625" />
+            <RowConstraints maxHeight="123.259033203125" minHeight="38.084991455078125" prefHeight="45.35626220703125" />
+            <RowConstraints maxHeight="114.36026000976562" minHeight="38.08502197265625" prefHeight="45.64373779296875" />
+        </rowConstraints>
+         <children>
+            <Label text="Name:" textFill="#d7d7d7">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <Label text="Date of Birth:" textFill="#d7d7d7" GridPane.rowIndex="1">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="Address:" textFill="#d7d7d7" GridPane.rowIndex="2">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="City, State:" textFill="#d7d7d7" GridPane.rowIndex="3">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="Phone:" textFill="#d7d7d7" GridPane.rowIndex="4">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label text="Email:" textFill="#d7d7d7" GridPane.rowIndex="5">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <TextField promptText="E-Mail" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField promptText="Phone #" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField promptText="City, State" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField prefHeight="25.0" prefWidth="583.0" promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField promptText="DoB" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField prefHeight="25.0" prefWidth="0.0" promptText="Name" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+         </children>
+      </GridPane>
+      <Label layoutX="130.0" layoutY="411.0" text="Settings" textFill="#d7d7d7">
+         <font>
+            <Font size="51.0" />
+         </font>
+      </Label>
+      <Label layoutX="125.0" layoutY="96.0" prefHeight="39.0" prefWidth="369.0" text="Profile" textFill="#d7d7d7">
+         <font>
+            <Font size="51.0" />
+         </font>
+      </Label>
+      <Button fx:id="edit" layoutX="286.0" layoutY="107.0" mnemonicParsing="false" onAction="#editInfo" prefHeight="51.0" prefWidth="52.0" text="Edit" />
+      <Button fx:id="edit1" layoutX="346.0" layoutY="107.0" mnemonicParsing="false" onAction="#editInfo" prefHeight="51.0" prefWidth="52.0" text="Done" />
    </children>
 </AnchorPane>
