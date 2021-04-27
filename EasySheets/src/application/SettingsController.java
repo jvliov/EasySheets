@@ -15,6 +15,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class SettingsController {
@@ -32,8 +33,19 @@ public class SettingsController {
 	private ImageView setBtn;
 	@FXML
 	private Button logoutBtn;
+	@FXML
+	private GridPane template;
+	@FXML
+	private GridPane enterInfo;
+	@FXML 
+	private Button edit;
+	@FXML
+	private Button done;
 
-	
+		public void initialize()
+		{
+			enterInfo.setVisible(false);
+		}
 	
         public void openCal(MouseEvent event) throws IOException {
     	pane = (AnchorPane)FXMLLoader.load(getClass().getResource("Calendar.fxml"));
@@ -77,5 +89,14 @@ public class SettingsController {
     	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	window.setScene(scene);
     	window.show();
+    }
+    
+    public void editInfo(ActionEvent event) throws IOException
+    {
+    	template.setVisible(false);
+    	enterInfo.setVisible(true);
+    	
+    	
+    	
     }
 }
