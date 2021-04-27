@@ -11,7 +11,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Properties;
+
+import com.sun.javafx.scene.control.skin.DatePickerSkin;
 
 public class LoginController 
 {
@@ -21,8 +26,6 @@ public class LoginController
 	private AnchorPane loginBackground;
 	@FXML
 	private AnchorPane newUserPage;
-	@FXML
-	private AnchorPane Home;
 	@FXML
 	private TextField usernameField;
 	@FXML
@@ -37,90 +40,31 @@ public class LoginController
 	
 	public static ArrayList<String> usernames = new ArrayList<String>();
 	public static ArrayList<String> passwords = new ArrayList<String>();
+	HashMap<String, String> login = new HashMap<String, String>();
+	
+	public void initialize() throws IOException{
+    	
+		File file = new File("login.properties");
+		FileInputStream reader = new FileInputStream(file);
+		Properties properties = new Properties();
+		properties.load(reader);
+		reader.close();
+		for(String key: properties.stringPropertyNames()) {
+			login.put(key, properties.get(key).toString());
+		}
+		
+	}
 	
 	public void makeNewUser(ActionEvent event)throws IOException
 	{
 		newUserPage = (AnchorPane)FXMLLoader.load(getClass().getResource("NewUser.fxml"));
         Scene scene = new Scene(newUserPage,1200,720);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setTitle("Creating a User");
+        window.setTitle("New User");
         window.setScene(scene);
         window.show();
 	}
 	
-	public void entering(ActionEvent event)throws IOException
-	{
-		int usernameIndex = 100;
-		int passwordIndex = 100;
-		
-		//JUST READING IN THE FILE WITH THE USERNAMES AND PASSWORDS TO DATA SYSTEM
-		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\hayde\\eclipse-workspace\\MyTermProject\\src\\application\\Reasources\\UsernamePassword.txt"));
-		String line = reader.readLine();
-        if(usernames.size() == 0 && passwords.size() == 0) {
-            while (line != null) {
-                String[] splitString = line.split(", ");
-                usernames.add(splitString[0]);
-                passwords.add(splitString[1]);
-                // read next line
-                line = reader.readLine();
-            }
-        }
-        reader.close();
-		
-		String inputUsername = usernameField.getText();
-		String inputPassword = passwordField.getText();
-		
-		if(!usernames.contains(inputUsername) && !passwords.contains(inputPassword))
-		{
-			//ALERT SHOWING THE USER USERNAME OR PASSWORD IS INCORRECT
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setTitle("ERROR");
-			ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
-			alert.setContentText("ERROR: Wrong username or password");
-			alert.showAndWait();
-		}
-		if(usernames.contains(inputUsername))
-		{
-			usernameIndex = usernames.indexOf(inputUsername);
-		}
-		
-		
-		if(passwords.contains(inputPassword))
-		{
-			passwordIndex = passwords.indexOf(inputPassword);
-		}
-		
-		//System.out.print(usernameIndex + " " + passwordIndex);
-		
-		if((usernameIndex == passwordIndex) && usernameIndex != 100 && passwordIndex != 100)
-		{	
-			usernameField.clear();
-			passwordField.clear();
-			
-			Home = (AnchorPane)FXMLLoader.load(getClass().getResource("Home.fxml"));
-	        Scene scene = new Scene(Home,1200,720);
-	        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	        window.setTitle("Home");
-	        window.setScene(scene);
-	        window.show();
-		}
-		
-		else
-		{
-			//ALERT SHOWING THE USER USERNAME OR PASSWORD IS INCORRECT
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setTitle("ERROR");
-			ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
-			alert.setContentText("ERROR: Wrong username or password");
-			alert.showAndWait();
-			
-			usernameField.clear();
-			passwordField.clear();
-		}
-
-	}
-	
-	//THIS IS CALLED WHEN THE USER CLICKS NEED IN THE MAIN PAGE
     public void openHome(ActionEvent event) throws IOException {
     	background = (AnchorPane)FXMLLoader.load(getClass().getResource("Home.fxml"));
     	Scene scene = new Scene(background,1200,720);
@@ -128,6 +72,45 @@ public class LoginController
     	window.setScene(scene);
     	window.show();
     }
+    
+    public void entering(ActionEvent event)throws IOException
+	{	
+		String inputUsername = usernameField.getText();
+		String inputPassword = passwordField.getText();
+		
+		if(login.containsKey(inputUsername))
+		{
+			if(login.containsValue(inputPassword))
+			{
+				background = (AnchorPane)FXMLLoader.load(getClass().getResource("Home.fxml"));
+		    	Scene scene = new Scene(background,1200,720);
+		    	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		    	window.setScene(scene);
+		    	window.show();
+		    	usernameField.clear();
+				passwordField.clear();
+			}
+			else {
+				//ALERT SHOWING THE USER PASSWORD IS INCORRECT
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("ERROR");
+				ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+				alert.setContentText("ERROR: Password is incorrect.");
+				alert.showAndWait();
+			}
+		}
+		else
+		{
+			//ALERT SHOWING THE USER USERNAME IS INCORRECT
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("ERROR");
+			ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+			alert.setContentText("ERROR: Username does not exists.");
+			alert.showAndWait();
+		}	
+		
+
+	}
 	
 	
 
