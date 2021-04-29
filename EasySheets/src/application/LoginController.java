@@ -105,7 +105,7 @@ public class LoginController
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setTitle("ERROR");
 			ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
-			alert.setContentText("ERROR: Username does not exists.");
+			alert.setContentText("ERROR: Username does not exist.");
 			alert.showAndWait();
 		}	
 		
