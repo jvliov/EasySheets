@@ -37,13 +37,13 @@ public class LoginController
 	@FXML
 	private TextField user;
 	
+	public static String inputUsername;
 	
-	public static ArrayList<String> usernames = new ArrayList<String>();
-	public static ArrayList<String> passwords = new ArrayList<String>();
-	HashMap<String, String> login = new HashMap<String, String>();
+	static HashMap<String, String> login = new HashMap<String, String>();
 	
 	public void initialize() throws IOException{
     	
+		//usernameField.setStyle("-fx-text-inner-color: black;");
 		File file = new File("login.properties");
 		FileInputStream reader = new FileInputStream(file);
 		Properties properties = new Properties();
@@ -75,7 +75,7 @@ public class LoginController
     
     public void entering(ActionEvent event)throws IOException
 	{	
-		String inputUsername = usernameField.getText();
+		inputUsername = usernameField.getText();
 		String inputPassword = passwordField.getText();
 		
 		if(login.containsKey(inputUsername))
