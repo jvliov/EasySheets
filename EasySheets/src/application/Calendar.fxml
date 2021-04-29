@@ -1,69 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #242525;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CalendarController">
+<AnchorPane fx:id="pane" prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #242525;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CalendarController">
    <children>
-      <VBox layoutX="202.0" layoutY="99.0" prefHeight="358.0" prefWidth="115.0" style="-fx-background-color: #353636;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="720.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Reasources/CalendarBackground.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="202.0" layoutY="99.0" prefHeight="358.0" prefWidth="115.0" style="-fx-border-color: #42eff5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="homBtn" fitHeight="57.0" fitWidth="54.0" onMouseClicked="#openHome" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
-                  <Insets left="25.0" top="20.0" />
+                  <Insets left="30.0" top="20.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../Reasources/homeIcon.png" />
+                  <Image url="@Reasources/Home2.png" />
                </image>
             </ImageView>
             <ImageView fx:id="shtBtn" fitHeight="57.0" fitWidth="54.0" layoutX="30.0" layoutY="238.0" onMouseClicked="#openSheets" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Reasources/sheets.png" />
+                  <Image url="@Reasources/Sheet2.png" />
                </image>
                <VBox.margin>
-                  <Insets left="32.0" top="20.0" />
+                  <Insets left="30.0" top="20.0" />
                </VBox.margin>
             </ImageView>
             <ImageView fx:id="calBtn" fitHeight="57.0" fitWidth="54.0" layoutX="10.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Reasources/calendar.png" />
+                  <Image url="@Reasources/Calender2.png" />
                </image>
                <VBox.margin>
-                  <Insets left="32.0" top="20.0" />
+                  <Insets left="30.0" top="20.0" />
                </VBox.margin>
             </ImageView>
             <ImageView fx:id="setBtn" fitHeight="57.0" fitWidth="54.0" layoutX="10.0" layoutY="347.0" onMouseClicked="#openSettings" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Reasources/settings.png" />
+                  <Image url="@Reasources/Untitled-2.png" />
                </image>
                <VBox.margin>
-                  <Insets left="29.0" top="20.0" />
+                  <Insets left="30.0" top="20.0" />
                </VBox.margin>
             </ImageView>
-            <Button fx:id="proBtn" layoutX="35.0" layoutY="201.0" mnemonicParsing="false" onAction="#openProfile" text="PROFILE">
-               <VBox.margin>
-                  <Insets left="25.0" right="25.0" top="425.0" />
-               </VBox.margin>
-            </Button>
          </children>
       </VBox>
-      <VBox fx:id="main" layoutX="161.0" layoutY="108.0" prefHeight="720.0" prefWidth="1085.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label layoutX="128.0" layoutY="24.0" text="Calendar" textFill="#030303">
+         <font>
+            <Font size="70.0" />
+         </font>
+      </Label>
+      <Label layoutX="600.0" layoutY="58.0" text="Current Time &amp; Date:" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="time" layoutX="841.0" layoutY="58.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="276.0" layoutY="198.0" prefHeight="400.0" prefWidth="700.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="105.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="105.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="105.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="105.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="105.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="70.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="280.0" minHeight="5.0" prefHeight="210.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="169.0" minHeight="10.0" prefHeight="103.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Label text="Calendar" textFill="#d7d7d7">
-               <font>
-                  <Font size="70.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="10.0" />
-               </VBox.margin>
+            <Label text="Sunday" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="300.0" left="35.0" />
+               </GridPane.margin>
             </Label>
-            <DatePicker />
+            <Label text="Monday" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="300.0" left="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Tuesday" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="300.0" left="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Wednesday" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="300.0" left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Thursday" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="300.0" left="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Friday" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="300.0" left="35.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Saturday" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="300.0" left="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="sundayWork" text="Label" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="mondayWork" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="tuesdayWork" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="wednesdayWork" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="thursdayWork" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="fridayWork" text="Label" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="saturdayWork" text="Label" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="sundayAmount" alignment="CENTER" text="Label" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="6" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
          </children>
-      </VBox>
+      </GridPane>
+      <Button fx:id="hella" layoutX="524.0" layoutY="609.0" mnemonicParsing="false" onAction="#schedule" prefHeight="88.0" prefWidth="205.0" text="Show Schedule" />
    </children>
 </AnchorPane>
