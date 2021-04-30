@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.EasySheetsModel;
 
 public class HomeController extends LoginController{
 	
@@ -50,11 +51,8 @@ public class HomeController extends LoginController{
 	
     public void initialize() throws IOException{
     	String userFileName = inputUsername + ".properties";
-    	File file = new File(userFileName);
-		FileInputStream reader = new FileInputStream(file);
-		Properties properties = new Properties();
-		properties.load(reader);
-		reader.close();
+		Properties properties = EasySheetsModel.getProperties(userFileName);
+		
 		for(String key: properties.stringPropertyNames()) {
 			login.put(key, properties.get(key).toString());
 		}

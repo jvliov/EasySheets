@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.EasySheetsModel;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Properties;
@@ -39,11 +41,7 @@ public class LoginController
     	
 		usernameField.setStyle("-fx-text-inner-color: black");
 		passwordField.setStyle("-fx-text-inner-color: black");
-		File file = new File("login.properties");
-		FileInputStream reader = new FileInputStream(file);
-		Properties properties = new Properties();
-		properties.load(reader);
-		reader.close();
+		Properties properties = EasySheetsModel.getProperties("login.properties");
 		for(String key: properties.stringPropertyNames()) {
 			login.put(key, properties.get(key).toString());
 		}

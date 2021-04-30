@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
@@ -18,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.EasySheetsModel;
 
 public class SettingsController extends LoginController{
 	@FXML
@@ -68,12 +68,10 @@ public class SettingsController extends LoginController{
 	public void initialize() throws IOException{
 		template.setVisible(true);
 		enterInfo.setVisible(false);
+		
     	String userFileName = inputUsername + ".properties";
-    	File file = new File(userFileName);
-		FileInputStream reader = new FileInputStream(file);
-		Properties properties = new Properties();
-		properties.load(reader);
-		reader.close();
+		Properties properties = EasySheetsModel.getProperties(userFileName);
+		
 		name.setText(properties.getProperty("name"));
 		dob.setText(properties.getProperty("dob"));
 		address.setText(properties.getProperty("address"));
@@ -119,11 +117,8 @@ public class SettingsController extends LoginController{
     	template.setVisible(false);
     	enterInfo.setVisible(true);
     	String userFileName = inputUsername + ".properties";
-    	File file = new File(userFileName);
-		FileInputStream reader = new FileInputStream(file);
-		Properties properties = new Properties();
-		properties.load(reader);
-		reader.close();
+		Properties properties = EasySheetsModel.getProperties(userFileName);
+		
 		nameField.setText(properties.getProperty("name"));
 		dobField.setText(properties.getProperty("dob"));
 		addressField.setText(properties.getProperty("address"));
@@ -135,11 +130,7 @@ public class SettingsController extends LoginController{
     public void doneEditing(ActionEvent event) throws IOException
     {
     	String userFileName = inputUsername + ".properties";
-    	File file = new File(userFileName);
-		FileInputStream reader = new FileInputStream(file);
-		Properties properties = new Properties();
-		properties.load(reader);
-		reader.close();
+		Properties properties = EasySheetsModel.getProperties(userFileName);
 
 		//Puting info to propertiess
 		properties.setProperty("name", nameField.getText());

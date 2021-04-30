@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,14 +21,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import model.EasySheetsModel;
 
 public class ManagerPageController extends LoginController{
 	@FXML
 	private AnchorPane pane;
 	@FXML
 	private ImageView homBtn;
-	@FXML
-	private ImageView calBtn;
 	@FXML
 	private ImageView shtBtn;
 	@FXML
@@ -83,17 +82,18 @@ public class ManagerPageController extends LoginController{
 	private Button doneSchedule;
 	@FXML
 	private Button selectUsername;
+	@FXML
+	private Button cancelAddBtn;
+	@FXML
+	private Label addSchedLabel;
 	
 	HashMap<String, String> user = new HashMap<String, String>();
 	HashMap<String, String> login = new HashMap<String, String>();
 	
 	public void initialize() throws IOException{
 		String userFileName = inputUsername + ".properties";
-    	File file = new File(userFileName);
-		FileInputStream reader = new FileInputStream(file);
-		Properties properties = new Properties();
-		properties.load(reader);
-		reader.close();
+		Properties properties = EasySheetsModel.getProperties(userFileName);
+		
 		if(properties.contains("m"))
 			addNewUser.setVisible(true);
 		
@@ -120,11 +120,36 @@ public class ManagerPageController extends LoginController{
     	window.show();
     }
     
-    public void openAddNew(ActionEvent event) throws IOException {
+    public void openAddNew(ActionEvent event) {
     	
+    	addSchedLabel.setText("Add New Employee");
+    	selectBox.setVisible(false);
     	newUserGrid.setVisible(true);
     	doneAdding.setVisible(true);
     	addNewUser.setVisible(false);
+    	cancelAddBtn.setVisible(true);
+    	
+    }
+    
+    public void cancelAdd(ActionEvent event) {
+    	
+    	nameField.clear();
+    	dobField.clear();
+    	addressField.clear();
+    	cityField.clear();
+    	phoneField.clear();
+    	emailField.clear();
+    	wageField.clear();
+    	usernameField.clear();
+    	passwdField.clear();
+    	addSchedLabel.setText("Set Schedules");
+    	selectBox.setVisible(true);
+    	datesGrid.setVisible(false);
+    	addNewUser.setVisible(true);
+    	doneSchedule.setVisible(false);
+    	newUserGrid.setVisible(false);
+    	doneAdding.setVisible(false);
+    	cancelAddBtn.setVisible(false);
     	
     }
     
@@ -139,11 +164,8 @@ public class ManagerPageController extends LoginController{
     
     public void selectUser(ActionEvent event) throws IOException{
     	
-    	File usersFile = new File("login.properties");
-		FileInputStream usersReader = new FileInputStream(usersFile);
-		Properties usersProperties = new Properties();
-		usersProperties.load(usersReader);
-		usersReader.close();
+		Properties usersProperties = EasySheetsModel.getProperties("login.properties");
+		//Checking if user exists
 		if(usersProperties.containsKey(employee.getText()))
 		{
 			selectBox.setVisible(true);
@@ -166,63 +188,59 @@ public class ManagerPageController extends LoginController{
     	
 		
 		//Checking if user exists
-		
-    		File file = new File(employee.getText() + ".properties");
-    		FileInputStream reader = new FileInputStream(file);
-    		Properties userProp = new Properties();
-    		userProp.load(reader);
-    		reader.close();
-    		
-    		if(mondayField.getText() == null)
-    			userProp.setProperty("monday", "Off");
-    		else
-    			userProp.setProperty("monday", mondayField.getText());
-    		if(tuesdayField.getText() == null)
-    			userProp.setProperty("tuesday", "Off");
-    		else
-    			userProp.setProperty("tuesday", mondayField.getText());
-    		if(wednesdayField.getText() == null)
-    			userProp.setProperty("wednesday", "Off");
-    		else
-    			userProp.setProperty("wednesday", mondayField.getText());
-    		if(thursdayField.getText() == null)
-    			userProp.setProperty("thursday", "Off");
-    		else
-    			userProp.setProperty("thursday", mondayField.getText());
-    		if(fridayField.getText() == null)
-    			userProp.setProperty("friday", "Off");
-    		else
-    			userProp.setProperty("friday", mondayField.getText());
-    		if(saturdayField.getText() == null)
-    			userProp.setProperty("saturday", "Off");
-    		else
-    			userProp.setProperty("saturday", mondayField.getText());
-    		if(sundayField.getText() == null)
-    			userProp.setProperty("sunday", "Off");
-    		else
-    			userProp.setProperty("sunday", mondayField.getText());
-    		//Storing into file
-    		File f = new File(userProp.getProperty("username") + ".properties");
-    		FileWriter writer = new FileWriter(f, false);
-    		userProp.store(writer, null);
-    		writer.close();
-    		mondayField.clear();
-    		tuesdayField.clear();
-    		wednesdayField.clear();
-    		thursdayField.clear();
-    		fridayField.clear();
-    		saturdayField.clear();
-    		sundayField.clear();
-    		selectBox.setVisible(true);
-        	datesGrid.setVisible(false);
-        	addNewUser.setVisible(true);
-        	doneSchedule.setVisible(false);
+		String filename = employee.getText() + ".properties";
+    	Properties userProp = EasySheetsModel.getProperties(filename);
+    	
+    	if(mondayField.getText() == null)
+    		userProp.setProperty("monday", "Off");
+    	else
+    		userProp.setProperty("monday", mondayField.getText());
+    	if(tuesdayField.getText() == null)
+    		userProp.setProperty("tuesday", "Off");
+    	else
+    		userProp.setProperty("tuesday", tuesdayField.getText());
+    	if(wednesdayField.getText() == null)
+    		userProp.setProperty("wednesday", "Off");
+    	else
+    		userProp.setProperty("wednesday", wednesdayField.getText());
+    	if(thursdayField.getText() == null)
+    		userProp.setProperty("thursday", "Off");
+    	else
+    		userProp.setProperty("thursday", thursdayField.getText());
+   		if(fridayField.getText() == null)
+   			userProp.setProperty("friday", "Off");
+   		else
+   			userProp.setProperty("friday", fridayField.getText());
+   		if(saturdayField.getText() == null)
+    		userProp.setProperty("saturday", "Off");
+    	else
+   			userProp.setProperty("saturday", saturdayField.getText());
+   		if(sundayField.getText() == null)
+    		userProp.setProperty("sunday", "Off");
+    	else
+   			userProp.setProperty("sunday", sundayField.getText());
+    	//Storing into file
+    	File f = new File(userProp.getProperty("username") + ".properties");
+    	FileWriter writer = new FileWriter(f, false);
+    	userProp.store(writer, null);
+    	writer.close();
+    	mondayField.clear();
+    	tuesdayField.clear();
+    	wednesdayField.clear();
+    	thursdayField.clear();
+    	fridayField.clear();
+    	saturdayField.clear();
+    	sundayField.clear();
+    	selectBox.setVisible(true);
+       	datesGrid.setVisible(false);
+       	addNewUser.setVisible(true);
+       	doneSchedule.setVisible(false);
         	
-        	//ALERT SHOWING THE schedule was changed
-			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			alert.setTitle("SCHEDULE SET");
-			alert.setContentText("The schedule for " + userProp.getProperty("username") + " has been set.");
-			alert.showAndWait();
+       	//ALERT SHOWING THE schedule was changed
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("SCHEDULE SET");
+		alert.setContentText("The schedule for " + userProp.getProperty("username") + " has been set.");
+		alert.showAndWait();
     }
     
     public void addUser(ActionEvent event) throws IOException {
@@ -237,47 +255,62 @@ public class ManagerPageController extends LoginController{
     	String username = usernameField.getText();
     	String password = passwdField.getText();
     	String type = empTypeField.getText();
-    	String filename = username + ".properties";
-    	
-    	//Adding username and password to login file
-    	Properties loginProp = new Properties();
-    	FileOutputStream logwriter = new FileOutputStream("login.properties", true);
-    	loginProp.put(username, password);
-    	loginProp.store(logwriter, null);
-    	
-    	//Creating and adding things to user property file
-    	File userFile = new File(filename);
-    	FileOutputStream writer = new FileOutputStream(userFile, true);
-    	Properties properties = new Properties();
-    	user.put("name", name);
-    	user.put("dob", dob);
-    	user.put("address", address);
-    	user.put("city", city);
-    	user.put("phone", phone);
-    	user.put("email", email);
-    	user.put("wage", wage);
-    	user.put("username", username);
-    	user.put("password", password);
-    	user.put("type", type);
-    	user.put("monday", "Off");
-    	user.put("tuesday", "Off");
-    	user.put("wednesday", "Off");
-    	user.put("thursday", "Off");
-    	user.put("friday", "Off");
-    	user.put("saturday", "Off");
-    	user.put("sunday", "Off");
-    	properties.putAll(user);
-    	properties.store(writer, null);
-    	nameField.clear();
-    	dobField.clear();
-    	addressField.clear();
-    	cityField.clear();
-    	phoneField.clear();
-    	emailField.clear();
-    	wageField.clear();
-    	usernameField.clear();
-    	passwdField.clear();
-    	
+    	if((name.equals("") || dob.equals("") || address.equals(""))|| city.equals("") || phone.equals("") || email.equals("") || wage.equals("") || username.equals("") || password.equals("") || type.equals("")) {
+    		//ALERT SHOWING THE USER USERNAME IS INCORRECT
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("ERROR");
+			alert.setContentText("ERROR: Please use all of the fields.");
+			alert.showAndWait();
+    	}
+    	else {
+	    	String filename = username + ".properties";
+	    	
+	    	//Adding username and password to login file
+	    	Properties loginProp = new Properties();
+	    	FileOutputStream logwriter = new FileOutputStream("login.properties", true);
+	    	loginProp.put(username, password);
+	    	loginProp.store(logwriter, null);
+	    	
+	    	//Creating and adding things to user property file
+	    	File userFile = new File(filename);
+	    	FileOutputStream writer = new FileOutputStream(userFile, true);
+	    	Properties properties = new Properties();
+	    	user.put("name", name);
+	    	user.put("dob", dob);
+	    	user.put("address", address);
+	    	user.put("city", city);
+	    	user.put("phone", phone);
+	    	user.put("email", email);
+	    	user.put("wage", wage);
+	    	user.put("username", username);
+	    	user.put("password", password);
+	    	user.put("type", type);
+	    	user.put("monday", "Off");
+	    	user.put("tuesday", "Off");
+	    	user.put("wednesday", "Off");
+	    	user.put("thursday", "Off");
+	    	user.put("friday", "Off");
+	    	user.put("saturday", "Off");
+	    	user.put("sunday", "Off");
+	    	properties.putAll(user);
+	    	properties.store(writer, null);
+	    	nameField.clear();
+	    	dobField.clear();
+	    	addressField.clear();
+	    	cityField.clear();
+	    	phoneField.clear();
+	    	emailField.clear();
+	    	wageField.clear();
+	    	usernameField.clear();
+	    	passwdField.clear();
+	    	addSchedLabel.setText("Set Schedules");
+	    	selectBox.setVisible(true);
+	    	datesGrid.setVisible(false);
+	    	addNewUser.setVisible(true);
+	    	doneSchedule.setVisible(false);
+	    	newUserGrid.setVisible(false);
+	    	doneAdding.setVisible(false);
+    	}
     	
     }
 }
