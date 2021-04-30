@@ -57,7 +57,7 @@
             </Label>
             <HBox prefHeight="45.0" prefWidth="1085.0">
                <children>
-                  <Label text="Set Schedules" textFill="#d7d7d7">
+                  <Label fx:id="addSchedLabel" text="Set Schedules" textFill="#d7d7d7">
                      <font>
                         <Font size="35.0" />
                      </font>
@@ -267,5 +267,6 @@
       </HBox>
       <Button fx:id="doneSchedule" layoutX="125.0" layoutY="390.0" mnemonicParsing="false" onAction="#doneSchedules" text="Done" visible="false" />
       <Button fx:id="addNewUser" layoutX="125.0" layoutY="685.0" mnemonicParsing="false" onAction="#openAddNew" text="Add New Employee" />
+      <Button fx:id="cancelAddBtn" layoutX="183.0" layoutY="441.0" mnemonicParsing="false" onAction="#cancelAdd" text="Cancel" visible="false" />
    </children>
 </AnchorPane>

@@ -310,6 +310,7 @@ public class ManagerPageController extends LoginController{
 	    	doneSchedule.setVisible(false);
 	    	newUserGrid.setVisible(false);
 	    	doneAdding.setVisible(false);
+	    	cancelAddBtn.setVisible(false);
     	}
     	
     }
