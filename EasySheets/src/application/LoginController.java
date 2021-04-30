@@ -6,17 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
-
-import com.sun.javafx.scene.control.skin.DatePickerSkin;
 
 public class LoginController 
 {
@@ -43,7 +37,8 @@ public class LoginController
 	
 	public void initialize() throws IOException{
     	
-		//usernameField.setStyle("-fx-text-inner-color: black;");
+		usernameField.setStyle("-fx-text-inner-color: black");
+		passwordField.setStyle("-fx-text-inner-color: black");
 		File file = new File("login.properties");
 		FileInputStream reader = new FileInputStream(file);
 		Properties properties = new Properties();
@@ -94,7 +89,6 @@ public class LoginController
 				//ALERT SHOWING THE USER PASSWORD IS INCORRECT
 				Alert alert = new Alert(Alert.AlertType.ERROR);
 				alert.setTitle("ERROR");
-				ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
 				alert.setContentText("ERROR: Password is incorrect.");
 				alert.showAndWait();
 			}
@@ -104,7 +98,6 @@ public class LoginController
 			//ALERT SHOWING THE USER USERNAME IS INCORRECT
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setTitle("ERROR");
-			ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
 			alert.setContentText("ERROR: Username does not exist.");
 			alert.showAndWait();
 		}	

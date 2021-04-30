@@ -15,11 +15,11 @@ public class Main extends Application {
 			Scene scene = new Scene(root,1200,720);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("EASY SHEETS");
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
-			//Test
 		}
 	}
 	

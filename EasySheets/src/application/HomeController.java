@@ -7,14 +7,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Properties;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -51,21 +47,6 @@ public class HomeController extends LoginController{
 	private Label fridayWork;
 	@FXML
 	private Label saturdayWork;
-//	@FXML
-//	private Label sundayAmount;
-//	@FXML
-//	private Label mondayAmount;
-//	@FXML
-//	private Label tuesdayAmount;
-//	@FXML
-//	private Label wednesdayAmount;
-//	@FXML
-//	private Label thursdayAmount;
-//	@FXML
-//	private Label fridayAmount;
-//	@FXML
-//	private Label saturdayAmount;
-	
 	
     public void initialize() throws IOException{
     	String userFileName = inputUsername + ".properties";
@@ -79,7 +60,9 @@ public class HomeController extends LoginController{
 		}
 		String name = properties.getProperty("name");
 		int i = name.indexOf(' ');
-		String firstName = name.substring(0, i);
+		String firstName = name;
+		if(i != -1)
+			firstName = name.substring(0, i);
 		welcomeLbl.setText("Welcome, " + firstName + ".");
 		
 	    mondayWork.setText(properties.getProperty("monday"));

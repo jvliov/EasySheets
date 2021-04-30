@@ -1,1 +1,15 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#homBtn{
+	-fx-background-image:url("homeIcon.png");
+	-fx-background-size:100% 100%
+}
+
+#homeTog{
+	-fx-graphic: url('homeIcon.png');
+	-fx-background-size:20% 20%
+}
+
+#homeTog:selected{
+	-fx-graphic: url('homeIcon.png');
+	-fx-background-size:20% 20%
+}
