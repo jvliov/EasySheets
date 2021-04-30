@@ -51,20 +51,20 @@ public class HomeController extends LoginController{
 	private Label fridayWork;
 	@FXML
 	private Label saturdayWork;
-	@FXML
-	private Label sundayAmount;
-	@FXML
-	private Label mondayAmount;
-	@FXML
-	private Label tuesdayAmount;
-	@FXML
-	private Label wednesdayAmount;
-	@FXML
-	private Label thursdayAmount;
-	@FXML
-	private Label fridayAmount;
-	@FXML
-	private Label saturdayAmount;
+//	@FXML
+//	private Label sundayAmount;
+//	@FXML
+//	private Label mondayAmount;
+//	@FXML
+//	private Label tuesdayAmount;
+//	@FXML
+//	private Label wednesdayAmount;
+//	@FXML
+//	private Label thursdayAmount;
+//	@FXML
+//	private Label fridayAmount;
+//	@FXML
+//	private Label saturdayAmount;
 	
 	
     public void initialize() throws IOException{
