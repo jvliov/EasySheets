@@ -1,0 +1,14 @@
+Name of Project - Easy Sheets
+Name of Team - Team 7
+Team members - Hayden Hughes (cic693), Julio Valdes (vjr976)
+Easy Sheets is a scheduling management application for places of work. Each employee/manager is able to login to see their schedule for the week and edit their
+information. Depending on the employee type, they may be able to use the manager page to add new employees and set schedules.
+
+Known bugs: The program does not have any checks on the information that is inputted by the user. As a result, the user may set/change their names to anything
+that is not neccessarily a string. This won't break the program, but it would not make sense to have the information in this way.
+
+Login info (all logins are in login.properties)
+	Manager login - Username: vjr976 Password: arriba
+	Employee login - Username: sur987 Password: ps
+
+Other requirements: The paths of some images and fxml files may need to be altered. For the images, simply change the image views on SceneBuilder accordingly.
